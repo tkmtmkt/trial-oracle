@@ -3,10 +3,10 @@
 ### dockerイメージ作成
 
 ```sh
-git clone https://github.com/oracle/docker-images.git
-cd docker-images/OracleDatabase/SingleInstance/dockerfiles
-./buildContainerImage.sh -v 11.2.0.2 -x
-./buildContainerImage.sh -v 18.4.0 -x
+$ git clone https://github.com/oracle/docker-images.git
+$ cd docker-images/OracleDatabase/SingleInstance/dockerfiles
+$ ./buildContainerImage.sh -v 11.2.0.2 -x
+$ ./buildContainerImage.sh -v 18.4.0 -x
 ```
 ```
  1 warning found (use docker --debug to expand):
@@ -23,17 +23,17 @@ cd docker-images/OracleDatabase/SingleInstance/dockerfiles
 
 ```sh
 # ディレクトリ作成
-mkdir -p ./db/opt/oracle/oradata
-chmod a+w ./db/opt/oracle/oradata
+$ mkdir -p ./db/opt/oracle/oradata
+$ chmod a+w ./db/opt/oracle/oradata
 
 # コンテナ起動
-docker compose up -d
+$ docker compose up -d
 ```
 
 ### コンテナ確認
 
 ```sh
-docker compose ps
+$ docker compose ps
 ```
 ```
 NAME          IMAGE                          COMMAND                   SERVICE   CREATED         STATUS                   PORTS
@@ -44,18 +44,23 @@ oracle-db-1   oracle/database:23.26.0-free   "/bin/bash -c 'exec …"   db      
 
 ```sh
 # bashログイン
-docker compose exec -u oracle db bash
+$ docker compose exec -u oracle db bash
+
+# Oracle環境設定
+$. oraenv
+ORACLE_SID = [XE] ? 
+The Oracle base remains unchanged with value /opt/oracle
 
 # NLS環境変数設定
-export NLS_LANG=Japanese_Japan.AL32UTF8
-export NLS_DATE_FORMAT='YYYY-MM-DD HH24:MI:SS'
-export NLS_TIMESTAMP_FORMAT='YYYY-MM-DD HH24:MI:SSXFF'
+$ export NLS_LANG=Japanese_Japan.AL32UTF8
+$ export NLS_DATE_FORMAT='YYYY-MM-DD HH24:MI:SS'
+$ export NLS_TIMESTAMP_FORMAT='YYYY-MM-DD HH24:MI:SSXFF'
 
 # SQLPlus起動
-sqlplu / as sysdba
-sqlplus sys/Passw0rd@//localhost:1521/XE as sysdba
-sqlplus system/Passw0rd@//localhost:1521/XE
-sqlplus pdbadmin/Passw0rd@//localhost:1521/XEPDB1
+$ sqlplu / as sysdba
+$ sqlplus sys/Passw0rd@//localhost:1521/XE as sysdba
+$ sqlplus system/Passw0rd@//localhost:1521/XE
+$ sqlplus pdbadmin/Passw0rd@//localhost:1521/XEPDB1
 ```
 
 ### PDB操作
