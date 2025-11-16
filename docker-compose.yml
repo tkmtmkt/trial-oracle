@@ -1,0 +1,14 @@
+name: oracle
+services:
+  db:
+    image: oracle/database:18.4.0-xe
+    environment:
+      - ORACLE_PWD=Passw0rd
+    hostname: oracle
+    volumes:
+      - ./db/opt/oracle/oradata/:/opt/oracle/oradata/
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 3G
