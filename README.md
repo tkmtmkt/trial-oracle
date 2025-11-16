@@ -1,5 +1,4 @@
-
-- [DockerでOracle Databaseを構築してみる #oracle - Qiita](https://qiita.com/h-i-ist/items/a67acbce0e7c6bdebd69)
+# trial oracle at docker
 
 ### dockerイメージ作成
 
@@ -110,3 +109,8 @@ CON_NAME
 ------------------------------
 XEPDB1
 ```
+
+
+## 参考
+
+- [DockerでOracle Databaseを構築してみる #oracle - Qiita](https://qiita.com/h-i-ist/items/a67acbce0e7c6bdebd69)
