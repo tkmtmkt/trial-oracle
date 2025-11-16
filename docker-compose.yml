@@ -2,11 +2,12 @@ name: oracle
 services:
   db:
     image: oracle/database:18.4.0-xe
-    environment:
-      - ORACLE_PWD=Passw0rd
     hostname: oracle
+    working_dir: /opt/oracle
     volumes:
       - ./db/opt/oracle/oradata/:/opt/oracle/oradata/
+    environment:
+      - ORACLE_PWD=Passw0rd
     deploy:
       resources:
         limits:
